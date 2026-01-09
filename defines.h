@@ -15,6 +15,8 @@ using u64   = uint64_t;
 using b8    = int8_t;
 using b32   = int32_t;
 
+#define MIN(a, b) (a < b ? a : b)
+
 inline void*
 align(void*& ptr, std::size_t& space, std::size_t size, std::size_t alignment)
 {

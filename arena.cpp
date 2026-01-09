@@ -26,7 +26,14 @@ void* Arena::push(u64 size, u64 alignment)
         m_offset = static_cast<u8*>(aligned) -
                    static_cast<u8*>(m_buffer) + size;
     }
-    return current_ptr;
+    return aligned;
+}
+
+void Arena::pop(u64 size)
+{
+    size = MIN(size, reinterpret_cast<u8*>(m_offset) -
+                     reinterpret_cast<u8*>(m_buffer));
+    m_offset -= size;
 }
 
 void Arena::clear()
