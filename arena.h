@@ -1,7 +1,13 @@
+// Very minimal memory arena implementation
+
 #ifndef ARENA_HH
 #define ARENA_HH
 
 #include "defines.h"
+
+// something like std::align
+void* align(void*& ptr,
+            std::size_t& space, std::size_t size, std::size_t alignment);
 
 class Arena
 {
@@ -29,17 +35,13 @@ public:
         return new (mem) T(std::forward<Args>(args)...);
     }
 
-    template<typename T>
-    inline void pop_type()
-    {
-        pop(sizeof(T));
-    }
+    // Pop was incorrect since we also need to take care of padding and alignment
+    // Not worth it for me for now
 
     void clear();
 
 private:
     void* push(u64 size, u64 alignment);
-    void pop(u64 size);
 
 private:
     u64 m_capacity;
