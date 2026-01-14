@@ -5,6 +5,8 @@
 
 #include "defines.h"
 
+#include <utility>
+
 // something like std::align
 void* align(void*& ptr,
             std::size_t& space, std::size_t size, std::size_t alignment);

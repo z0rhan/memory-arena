@@ -4,7 +4,7 @@
 void* align(void*& ptr,
             std::size_t& space, std::size_t size, std::size_t alignment)
 {
-    if (alignment == 0 || alignment % 2 != alignment)
+    if (alignment == 0 || alignment % 2 != 0)
     {
         return nullptr;
     }
@@ -12,7 +12,7 @@ void* align(void*& ptr,
     std::size_t current_offset = reinterpret_cast<std::size_t>(ptr) % alignment;
     std::size_t padding = alignment - current_offset;
 
-    if (current_offset + padding > size)
+    if (current_offset + padding > space)
     {
         return nullptr;
     }
