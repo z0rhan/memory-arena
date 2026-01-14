@@ -1,0 +1,17 @@
+Plans by ChatGPT:
+
+* **Reset-to-mark / rewind** (allocate a checkpoint, later roll back to it)
+* **Scoped marker** (RAII helper that rewinds automatically when it goes out of scope)
+* **Allocation failure policy** (return null vs assert vs throw, selectable)
+* **Debug mode checks** (bounds/overflow checks, alignment assertions)
+* **Optional memory poisoning** on clear (fill with pattern to catch use-after-clear)
+* **Stats/introspection** (capacity, used, remaining, peak usage, allocation count)
+* **Alignment convenience** (default alignment, or “push bytes” helper)
+* **Bulk construction helpers** (arrays of T, uninitialized vs value-initialized)
+* **Destructor tracking option** (register destructors for non-trivial types, then run on clear/reset)
+* **Move-only semantics** (disable copy, enable move safely)
+* **Thread-safety stance** (explicitly non-thread-safe, or a simple lock option)
+* **Separate arenas / sub-arenas** (split one large buffer into regions)
+* **OOM growth strategy** (optional “grow to new buffer” mode, or chained blocks)
+* **Allocation tagging** (debug labels / categories for profiling)
+* **Temporary scratch arena** pattern (for short-lived intermediates in kernels)
